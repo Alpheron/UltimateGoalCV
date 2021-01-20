@@ -2,7 +2,7 @@
 #include <iostream>
 #include <cmath>
 #include<tuple>
-#include "main.h"
+#include "singleImage.h"
 #include "phoneCam.h"
 
 using namespace cv;
