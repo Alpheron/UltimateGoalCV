@@ -1,10 +1,11 @@
 import cv2
 import numpy as np
 import sys
+from math import sqrt
 
 class Autotune:
     def __init__(self):
-        self.img = cv2.imread("/home/tinku/Programming/UltimateGoalCV/src/ringLocalization/assets/tiltedOneStack.jpeg")
+        self.img = cv2.imread("/home/tinku/Programming/UltimateGoalCV/src/ringLocalization/assets/IMG_4113.png")
         self.img = cv2.resize(self.img, (round(self.img.shape[1] / 4), round(self.img.shape[0] / 4)))
         self.lowerBound = (51, 131, 59)
         self.upperBound = (255, 255, 108)
@@ -62,8 +63,8 @@ class Autotune:
             pixelValue = (16 +  65.738*color[0]/256 + 129.057*color[1]/256 +  25.064*color[2]/256, 
             128 -  37.945*color[0]/256 -  74.494*color[1]/256 + 112.439*color[2]/256, 
             128 + 112.439*color[0]/256 -  94.154*color[1]/256 -  18.285*color[2]/256)
-            current_distance = pow(self.averageBound[0] - pixelValue[0], 2) + pow(self.averageBound[1] - pixelValue[1], 2) 
-            + pow(self.averageBound[2] - pixelValue[2], 2)
+            current_distance = sqrt(pow(self.averageBound[0] - pixelValue[0], 2) + pow(self.averageBound[1] - pixelValue[1], 2) 
+            + pow(self.averageBound[2] - pixelValue[2], 2))
             if current_distance < shortest:
                 shortest = current_distance
                 counter = temp
@@ -71,7 +72,7 @@ class Autotune:
                 pass
             temp += 1
         print(domColors[counter-1])
-        img = cv2.rectangle(img,(positions[counter-1][0], positions[counter-1][1]), (positions[counter-1][2], positions[counter-1][3]), (0,255,0), 5)
+        img = cv2.rectangle(img,(positions[counter][0], positions[counter][1]), (positions[counter][2], positions[counter][3]), (0,255,0), 5)
         return img
         
 
