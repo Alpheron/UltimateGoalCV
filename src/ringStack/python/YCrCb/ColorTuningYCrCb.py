@@ -75,4 +75,4 @@ class ColorTuner:
 
 
 if __name__ == "__main__":
-    colorTuner = ColorTuner('/home/tinku/Desktop/UltimateGoalCV/src/assets/chairFourStack.jpeg', 5.5)
+    colorTuner = ColorTuner('/home/tinku/Programming/UltimateGoalCV/src/ringLocalization/assets/IMG_4114.png', 5.5)
